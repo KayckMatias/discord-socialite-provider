@@ -1,7 +1,7 @@
 # Discord Socialite Provider for Laravel
 
-![Packagist](https://img.shields.io/packagist/v/kayckmatias/discord-socialite-provider?style=flat-square)
-![License](https://img.shields.io/packagist/l/kayckmatias/discord-socialite-provider?style=flat-square)
+![Packagist](https://img.shields.io/packagist/v/kayckmatias/discord-socialite-provider)
+![License](https://img.shields.io/packagist/l/kayckmatias/discord-socialite-provider)
 
 A Discord OAuth2 provider for the Laravel Socialite package. This package allows you to easily integrate Discord login with Laravel applications using Socialite with extra features for Discord OAuth2.
 
