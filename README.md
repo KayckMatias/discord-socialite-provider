@@ -105,6 +105,15 @@ return Socialite::driver('discord')
     ->redirect();
 ```
 
+### Specify Guild
+To add the `guild_id=` parameter to the Discord authorization URL, use the `withGuildId` method:
+
+```php
+return Socialite::driver('discord')
+    ->withGuildId('0000000000000000000')
+    ->redirect();
+```
+
 ### Consent Prompt
 To add the `prompt=none` parameter to the Discord authorization URL, use the `withConsent` method:
 

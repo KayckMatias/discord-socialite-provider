@@ -46,11 +46,11 @@ class DiscordProvider extends AbstractProvider implements ProviderInterface
     protected $scopes = ['identify', 'email'];
 
     /**
-     * The permissions to be added to the authorization URL.
+     * The extra parameters to be added to the authorization URL. (permissions, guild_id)
      *
-     * @var string|null
+     * @var array
      */
-    protected $permissions = null;
+    protected $extraParameters = [];
 
     /**
      * Whether to add the "prompt=none" parameter to the authorization URL.
@@ -85,7 +85,19 @@ class DiscordProvider extends AbstractProvider implements ProviderInterface
      */
     public function withPermissions(string $permissions): self
     {
-        $this->permissions = $permissions;
+        $this->extraParameters['permissions'] = $permissions;
+        return $this;
+    }
+
+    /**
+     * Set the guild_id to be added to the authorization URL.
+     *
+     * @param string $guildId
+     * @return $this
+     */
+    public function withGuildId(string $guildId): self
+    {
+        $this->extraParameters['guild_id'] = $guildId;
         return $this;
     }
 
@@ -110,20 +122,25 @@ class DiscordProvider extends AbstractProvider implements ProviderInterface
             state: $state
         );
 
-        return $this->appendPermissionsToUrlIfNecessary(authUrl: $authUrl);
+        return $this->appendExtraParametersToUrl(authUrl: $authUrl);
     }
 
     /**
-     * Append the permissions to the authorization URL if necessary.
+     * Append the extra parameters to the authorization URL.
      *
      * @param string $authUrl
      * @return string
      */
-    private function appendPermissionsToUrlIfNecessary(string $authUrl): string
+    private function appendExtraParametersToUrl(string $authUrl): string
     {
-        return $this->permissions
-            ? $authUrl . "&permissions=" . $this->permissions
-            : $authUrl;
+        $queryString = http_build_query(
+            data: $this->extraParameters,
+            numeric_prefix: '',
+            arg_separator: '&',
+            encoding_type: PHP_QUERY_RFC1738
+        );
+
+        return $authUrl . $queryString;
     }
 
     /**
