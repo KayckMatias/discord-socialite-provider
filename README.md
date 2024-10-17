@@ -26,7 +26,7 @@ A Discord OAuth2 provider for the Laravel Socialite package. This package allows
     'discord' => [
         'client_id' => env('DISCORD_CLIENT_ID'),
         'client_secret' => env('DISCORD_CLIENT_SECRET'),
-        'redirect' => env('DISCORD_REDIRECT_URI'),
+        'redirect' => '/auth/discord/callback',
     ]
     ```
 
@@ -38,7 +38,6 @@ Once you have your credentials, add the following environment variables to your 
 ```env
 DISCORD_CLIENT_ID=your-client-id
 DISCORD_CLIENT_SECRET=your-client-secret
-DISCORD_REDIRECT_URI=https://your-app.com/callback-url
 ```
 
 ## Usage
