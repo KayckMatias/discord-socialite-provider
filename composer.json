@@ -1,0 +1,40 @@
+{
+    "name": "kayckmatias/discord-socialite-provider",
+    "description": "A Complete Discord Provider for Laravel Socialite Package",
+    "type": "library",
+    "version": "1.0.0",
+    "keywords": [
+        "laravel",
+        "socialite",
+        "discord",
+        "provider",
+        "oauth"
+    ],
+    "readme": "README.md",
+    "require": {
+        "laravel/socialite": "^5.16"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Kayck Matias",
+            "email": "kayckmatias04@gmail.com",
+            "homepage": "https://kayck.dev"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "KayckMatias\\Laravel\\Socialite\\": "src/"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "KayckMatias\\Laravel\\Socialite\\DiscordServiceProvider"
+            ]
+        }
+    }
+}
